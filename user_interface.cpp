@@ -78,30 +78,30 @@ user_interface::user_interface(sf::RenderWindow* window, unsigned int screenWidt
 // Checks if buttons are clicked
 void user_interface::checkButtonClick(sf::Vector2f mousePos, sf::RenderWindow* win)
 {
-    for (auto& it : _buttonList)
-        it.second->checkClick(mousePos);
+	for (auto& it : _buttonList)
+		it.second->checkClick(mousePos);
 
-    if (_buttonList["RESET"]->isPressed())
-        resetBars();
+	if (_buttonList["RESET"]->isPressed())
+        	resetBars();
     
-    if (_buttonList["BUBBLE"]->isPressed())
-        bubbleSort();
+    	if (_buttonList["BUBBLE"]->isPressed())
+        	bubbleSort();
 	
-    if (_buttonList["INSERTION"]->isPressed())
-        insertionSort();
+    	if (_buttonList["INSERTION"]->isPressed())
+        	insertionSort();
 	
-    if (_buttonList["MERGE"]->isPressed())
+    	if (_buttonList["MERGE"]->isPressed())
 		mergeSort();
 	
-    if (_buttonList["SELECTION"]->isPressed())
+    	if (_buttonList["SELECTION"]->isPressed())
 		selectionSort();
 }
 
 // Randomizes bars
 void user_interface::resetBars()
 {
-    srand(time(NULL));
-    this->_bars.clear();
+    	srand(time(NULL));
+    	this->_bars.clear();
 
 	_bars_size = 48;
 	_space_btw_bars = _base.getGlobalBounds().height / 2;
@@ -113,19 +113,19 @@ void user_interface::resetBars()
 	_bars_min_y = _toolbar.getGlobalBounds().height;
 	_bars_max_y = _base.getPosition().y;
     
-    for (unsigned short i = 0; i < _bars_size; i++)
-    {
-        unsigned short x = _bars_min_x + i * (_bar_width + _space_btw_bars);
-        unsigned short y = rand() % _bars_size + 1;
-        y = _bars_max_y - y * (_bars_max_y / _bars_min_y);
+    	for (unsigned short i = 0; i < _bars_size; i++)
+    	{
+		unsigned short x = _bars_min_x + i * (_bar_width + _space_btw_bars);
+		unsigned short y = rand() % _bars_size + 1;
+		y = _bars_max_y - y * (_bars_max_y / _bars_min_y);
 
-        sf::RectangleShape temp;
-        temp.setPosition(sf::Vector2f(x, y));
-        temp.setSize(sf::Vector2f(_bar_width, _bars_max_y - y));
-        temp.setFillColor(sf::Color::Blue);
+		sf::RectangleShape temp;
+		temp.setPosition(sf::Vector2f(x, y));
+		temp.setSize(sf::Vector2f(_bar_width, _bars_max_y - y));
+		temp.setFillColor(sf::Color::Blue);
         
-        this->_bars.push_back(temp);
-    }
+        	this->_bars.push_back(temp);
+    	}
 }
 
 // Display everything on screen
@@ -134,22 +134,18 @@ void user_interface::render(std::vector<sf::RectangleShape>* left, std::vector<s
 	// Clear window
 	_win->clear(sf::Color::Black);
 
-    // Display toolbar
+	// Display toolbar
 	_win->draw(_toolbar);
-    
-    // Display buttons
-    for (auto& it : _buttonList)
-    {
-        it.second->render(_win);
-    }
 
-    // Display bars
+	// Display buttons
+	for (auto& it : _buttonList)
+		it.second->render(_win);
+
+    	// Display bars
 	for (auto& it : _bars)
-	{
 		_win->draw(it);
-	}
 
-    // Display controls and speed
+    	// Display controls and speed
 	_win->draw(_controls);
 	_win->draw(_curr_speed);
 
@@ -165,8 +161,8 @@ void user_interface::render(std::vector<sf::RectangleShape>* left, std::vector<s
 
 user_interface::~user_interface()
 {
-    for (auto& it : _buttonList)
-        delete it.second;
+	for (auto& it : _buttonList)
+		delete it.second;
 }
 
 // Event handling
