@@ -8,30 +8,30 @@ user_interface::user_interface(sf::RenderWindow* window, unsigned int screenWidt
 	_win = window;
 
 	// Toolbar
-    _toolbar.setSize(sf::Vector2f(screenWidth, screenHeight / 10));
-    _toolbar.setFillColor(sf::Color(150, 150, 150, 100));
+    	_toolbar.setSize(sf::Vector2f(screenWidth, screenHeight / 10));
+   	 _toolbar.setFillColor(sf::Color(150, 150, 150, 100));
     
 	// Sorting
 	_exit = false;
 	_default_speed = 101;
 	_animation_speed = _default_speed;
 
-    // Base for bars
-    _base.setPosition(screenWidth / 20, screenHeight - screenHeight / 10);
-    _base.setSize(sf::Vector2f(screenWidth - (screenWidth / 20), screenHeight / 80));
+    	// Base for bars
+    	_base.setPosition(screenWidth / 20, screenHeight - screenHeight / 10);
+    	_base.setSize(sf::Vector2f(screenWidth - (screenWidth / 20), screenHeight / 80));
 
-    // Initialize bars
-    resetBars();
+	// Initialize bars
+	resetBars();
 
-    // Button attributes
-    float btnHeight = _toolbar.getGlobalBounds().height / 2;
-    float btnWidth = btnHeight * 3;
+	// Button attributes
+	float btnHeight = _toolbar.getGlobalBounds().height / 2;
+	float btnWidth = btnHeight * 3;
 
-    // Font
-    this->_font = *font;
+	// Font
+	this->_font = *font;
 
-    // Controls
-    _controls.setFont(this->_font);
+	// Controls
+	_controls.setFont(this->_font);
 	_controls.setFillColor(sf::Color::White);
 	_controls.setCharacterSize(btnHeight / 2);
 	_controls.setString("Press UP to increase sort speed     |     Press DOWN to decrease sort speed     |     Press ESC to stop sorting");
@@ -44,35 +44,35 @@ user_interface::user_interface(sf::RenderWindow* window, unsigned int screenWidt
 	_curr_speed.setString("Current Speed (1-10): 8");
 	_curr_speed.setPosition(screenWidth / 2 - _curr_speed.getGlobalBounds().width / 2, _base.getPosition().y + btnHeight);
     
-    // Reset button
+    	// Reset button
 	_buttonList["RESET"] = new Button
 		((screenWidth / 5 - btnWidth / 2), btnHeight / 2,
-        btnWidth, btnHeight, "RESET", btnHeight / 1.5, this->_font,
-        sf::Color(200, 0, 0, 255), sf::Color(150, 0, 0, 255), sf::Color(200, 50, 50, 255));
+		btnWidth, btnHeight, "RESET", btnHeight / 1.5, this->_font,
+		sf::Color(200, 0, 0, 255), sf::Color(150, 0, 0, 255), sf::Color(200, 50, 50, 255));
 
-    // Bubble Sort Button
+    	// Bubble Sort Button
 	_buttonList["BUBBLE"] = new Button
-        (2 * (screenWidth / 5 - btnWidth / 2), btnHeight / 2,
-        btnWidth, btnHeight, "Bubble", btnHeight / 1.5, this->_font,
-        sf::Color(0, 100, 0, 255), sf::Color(100, 200, 100, 255), sf::Color(0, 200, 0, 255));
+		(2 * (screenWidth / 5 - btnWidth / 2), btnHeight / 2,
+		btnWidth, btnHeight, "Bubble", btnHeight / 1.5, this->_font,
+		sf::Color(0, 100, 0, 255), sf::Color(100, 200, 100, 255), sf::Color(0, 200, 0, 255));
 
-    // Insertion Sort Button
+    	// Insertion Sort Button
 	_buttonList["INSERTION"] = new Button
 		(3 * (screenWidth / 5 - btnWidth / 2), btnHeight / 2,
-        btnWidth, btnHeight, "Insertion", btnHeight / 1.5, this->_font,
-        sf::Color(0, 100, 0, 255), sf::Color(100, 200, 100, 255), sf::Color(0, 200, 0, 255));
+		btnWidth, btnHeight, "Insertion", btnHeight / 1.5, this->_font,
+		sf::Color(0, 100, 0, 255), sf::Color(100, 200, 100, 255), sf::Color(0, 200, 0, 255));
 
-    // Merge Sort Button
+    	// Merge Sort Button
 	_buttonList["MERGE"] = new Button
 		(4 * (screenWidth / 5 - btnWidth / 2), btnHeight / 2,
-        btnWidth, btnHeight, "Merge", btnHeight / 1.5, this->_font,
-        sf::Color(0, 100, 0, 255), sf::Color(100, 200, 100, 255), sf::Color(0, 200, 0, 255));
+		btnWidth, btnHeight, "Merge", btnHeight / 1.5, this->_font,
+		sf::Color(0, 100, 0, 255), sf::Color(100, 200, 100, 255), sf::Color(0, 200, 0, 255));
 
-    // Selection Sort Button
+    	// Selection Sort Button
 	_buttonList["SELECTION"] = new Button
 		(5 * (screenWidth / 5 - btnWidth / 2), btnHeight / 2,
-        btnWidth, btnHeight, "Selection", btnHeight / 1.5, this->_font,
-        sf::Color(0, 100, 0, 255), sf::Color(100, 200, 100, 255), sf::Color(0, 200, 0, 255));
+		btnWidth, btnHeight, "Selection", btnHeight / 1.5, this->_font,
+		sf::Color(0, 100, 0, 255), sf::Color(100, 200, 100, 255), sf::Color(0, 200, 0, 255));
 }
 
 // Checks if buttons are clicked
